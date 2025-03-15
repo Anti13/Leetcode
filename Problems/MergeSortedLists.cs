@@ -42,8 +42,6 @@ public class Solution {
         }
         current = result;
 
-
-
                 while(true)
         {
         if(list1 ==null && list2==null)
@@ -58,7 +56,6 @@ public class Solution {
              current = temp;
              list2=list2.next;
             continue;
-
 
         }
                 if(list1 !=null && list2==null)
@@ -84,16 +81,8 @@ public class Solution {
              current = temp;
              list2=list2.next;
         }
- 
         }
 
-
- 
-
     return result;
-
-
-
-
     }
 }

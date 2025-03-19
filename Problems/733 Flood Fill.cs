@@ -9,7 +9,6 @@ public class Solution {
         if(color == originalColor)
         return image;
 
-        var visited = new bool[rows, columns];
 
         stack.Push((sr, sc));
 
@@ -21,37 +20,29 @@ public class Solution {
             }
             var (i,j) = stack.Pop();
 
-            if(visited[i,j])
+            if(image[i][j] != originalColor)
             {
                 continue;
             }
 
-            visited[i,j] = true;
-            
-            if(image[i][j] == originalColor)
-            {
-                image[i][j] = color;
-            }
-            else{
-                continue;
-            }
+            image[i][j] = color;
 
-            if(i-1 >=0 && !visited[i-1,j])
+            if(i-1 >=0)
             {
                 stack.Push((i-1,j));
             }
 
-            if(i+1 < rows && !visited[i+1,j])
+            if(i+1 < rows)
             {
                 stack.Push((i+1,j));
             }
 
-            if(j-1 >=0 && !visited[i,j-1])
+            if(j-1 >=0)
             {
                 stack.Push((i,j-1));
             }
 
-            if(j+1 <columns && !visited[i,j+1])
+            if(j+1 <columns)
             {
                 stack.Push((i,j+1));
             }

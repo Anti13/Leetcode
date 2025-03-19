@@ -1,41 +1,48 @@
 public class Solution {
-    public bool IsPalindrome(string text) {
+    public bool IsPalindrome(string s) {
 
-        var sb =new StringBuilder();
-
-        foreach (var c in text)
-        {
-            if(char.IsLetterOrDigit(c))
-            {
-                sb.Append(char.ToLower(c));
-            }
-        }
-
-        var s = sb.ToString();
         var len = s.Length;
-
-        if(len == 1) return true;
-        if(len == 2) return s[0] == s[1];
-
         var left = 0;
-        var right = len -1;
+        var right = len-1;
 
-        while (true)
+        while(true)
         {
-            if(left >= right)
+            if(left >= right) return true;
+
+            while(true)
             {
-                break;
+                if(!char.IsLetterOrDigit(s[left])){
+                    left++;
+
+                    if(left >= right) return true;
+                }
+                else{
+                    break;
+                }
+                
             }
 
-            if(s[left] !=s[right])
+                        while(true)
             {
-                return false;
+                if(!char.IsLetterOrDigit(s[right])){
+                    right--;
+
+                    if(left >= right) return true;
+                }
+                else{
+                    break;
+                }
             }
+
+            if(!(char.ToLower(s[left]) == char.ToLower(s[right])))
+            return false;
 
             left++;
-            right--;
+            right --;
+
         }
 
         return true;
+
     }
 }
